@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "MindfulFeed",
+  "version": "1.0",
+  "description": "Tracks time and analyzes sentiment on social media feeds.",
+  "permissions": ["tabs", "storage", "activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.twitter.com/*",
+        "*://*.facebook.com/*",
+        "*://*.instagram.com/*",
+        "*://*.youtube.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
+
+
+

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MindfulFeed</title>
+  <style>
+    body {
+      width: 320px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      background: #f8fafc;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    
+    .header h2 {
+      margin: 0;
+      color: #1e293b;
+      font-size: 18px;
+    }
+    
+    .current-session {
+      background: white;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .platform-stats {
+      background: white;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .stat-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    
+    .stat-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .platform-name {
+      font-weight: 500;
+      text-transform: capitalize;
+    }
+    
+    .time-value {
+      color: #6b7280;
+    }
+    
+    .dashboard-btn {
+      width: 100%;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .dashboard-btn:hover {
+      background: #2563eb;
+    }
+    
+    .loading {
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+      padding: 20px;
+    }
+    
+    .sentiment-summary {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+    
+    .sentiment-item {
+      text-align: center;
+    }
+    
+    .sentiment-value {
+      font-weight: 600;
+      display: block;
+    }
+    
+    .positive { color: #10b981; }
+    .negative { color: #ef4444; }
+    .neutral { color: #6b7280; }
+    
+    .no-data {
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>🧘 MindfulFeed</h2>
+  </div>
+  
+  <div id="loading" class="loading">
+    Loading your stats...
+  </div>
+  
+  <div id="content" style="display: none;">
+    <!-- Current Session -->
+    <div class="current-session">
+      <div style="font-weight: 600; margin-bottom: 8px; font-size: 14px;">Current Session</div>
+      <div id="current-platform">Not on social media</div>
+      <div id="current-time" style="color: #6b7280; font-size: 12px;">0 minutes</div>
+    </div>
+    
+    <!-- Today's Stats -->
+    <div class="platform-stats">
+      <div style="font-weight: 600; margin-bottom: 8px; font-size: 14px;">Today's Usage</div>
+      <div id="daily-stats">
+        <div class="no-data">No data yet today</div>
+      </div>
+    </div>
+    
+    <!-- Recent Sentiment -->
+    <div class="platform-stats">
+      <div style="font-weight: 600; margin-bottom: 8px; font-size: 14px;">Recent Sentiment</div>
+      <div id="sentiment-stats">
+        <div class="sentiment-summary">
+          <div class="sentiment-item">
+            <span class="sentiment-value positive" id="positive-percent">0%</span>
+            <span>Positive</span>
+          </div>
+          <div class="sentiment-item">
+            <span class="sentiment-value neutral" id="neutral-percent">0%</span>
+            <span>Neutral</span>
+          </div>
+          <div class="sentiment-item">
+            <span class="sentiment-value negative" id="negative-percent">0%</span>
+            <span>Negative</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Dashboard Button -->
+    <button class="dashboard-btn" id="open-dashboard">
+      📊 Open Full Dashboard
+    </button>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
